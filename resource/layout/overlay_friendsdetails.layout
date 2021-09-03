@@ -2,83 +2,44 @@
 {
 	controls
 	{
-		FriendsDetailPanel 
-		{ 
-			controlname="COverlay_Details_Friends" 
-			style=detailsbox
-		}
-		
-		AllFriendsButton
-		{
-			controlname=button
-			labeltext="#Overlay_Friends_ViewAll"
-		}
-		
-		ViewPlayersButton
-		{
-			controlname=button
-			labeltext="#Overlay_Friends_ViewPlayers"
-		}
-		
+		FriendsDetailPanel { controlname="COverlay_Details_Friends" style=detailsbox }
+		AllFriendsButton { controlname=button labeltext="#Overlay_Friends_ViewAll" }
+		ViewPlayersButton { controlname=button labeltext="#Overlay_Friends_ViewPlayers" }
 		TitleText { controlname="label" labeltext="#Overlay_Taskbar_Friends" style=detailsboxtitle }
-		
-		TextThisManyFriends { controlname=label style=Focus labeltext="#Overlay_Friends_ThisManyOnline" }
-		
-		grid
-		{
-			alignment=justify		
-			interiorspacing=2
-			style=FriendsGrid
-		}
+		TextThisManyFriends { controlname=label style=highlight labeltext="#Overlay_Friends_ThisManyOnline" }
+
+		grid { alignment=justify	interiorspacing=2 style=FriendsGrid }
 	}
-	
 	colors
 	{
 	}
-	
 	styles
 	{
-		detailsboxtitle
+		button
 		{
-			bgcolor=none
-			image=graphics/metro/overlay/icons/friends
-		}
-		Button
-		{
-      font-family=semibold
+			inset=2
+			font-family=basefont
 			font-weight=400
-      font-size="18"
-      textcolor="White"
-      font-style=uppercase
-			bgcolor=none
-			inset-left=-6
-			inset-top=-4
-			padding-left=16
-			render
+		}
+		FriendsGrid
+		{
+			// Nerf the outline, etc that the main UI WrapPanel defines.	
+			render_bg 
 			{
-				0="image(x0,y0+5,x1,y1,graphics/metro/overlay/icons/globe)"
 			}
 		}
-		Button:hover
+		highlight
 		{
-			textcolor=White45
-		}
-		Button:active
-		{
-			textcolor=White25
+			textcolor=White
 		}
 	}
-	
 	layout
 	{
-		//Left
-		place { controls=TitleText x=16 y=16 width=36 height=36 }
-
-		//Right
-		place { control="AllFriendsButton,ViewPlayersButton" x=68 y=11 }
-		place { control="TextThisManyFriends" x=68 y=37 }
-		
-		//Hidden
-		place { control=grid height=0 }
+		region { name=title margin=16 width=max height=100 }
+		region { name=friendspanels margin-top=70 margin-bottom=50 }
+		region { name=bottom y=165  margin-top=10 margin-bottom=10 margin-left=10 margin-right=10 width=max height=124 }
+		place { control="TitleText,TextThisManyFriends" region=title spacing=12 dir=down}
+		place { controls=grid region=friendspanels width=max height=max }
+		place { controls=AllFriendsButton,ViewPlayersButton region=bottom spacing=10 align=bottom margin-bottom=4  }
 	}
 }
