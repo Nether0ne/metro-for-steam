@@ -1,1 +1,1 @@
-## Merged **[]()** and **[]()** with returned main UI elements from original Metro skin.
+## Merged **[MetroForSteam](https://github.com/minischetti/metro-for-steam)** and **[UPMetroSkin](https://github.com/redsigma/UPMetroSkin)** with returned main UI elements from original Metro skin.
